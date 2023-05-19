@@ -4,3 +4,4 @@
 /logs/**
 /src/main/resources/conf/appsettings.json
 /Output
+/target
