@@ -29,15 +29,14 @@ import com.azure.identity.ClientSecretCredentialBuilder;
 import javax.naming.AuthenticationException;
 
 public class EncodingWithMESPredefinedPreset {
-    // 미디어 서비스 리소스에 접근하기 위한 계정 정보는 appsettings.json 파일에 저장되어 있습니다.
-    private static final String TRANSFORM_NAME = "AdaptiveBitrate"; // 인코딩 프로파일을 입력 합니다.
-    private static final String OUTPUT_FOLDER = "Output"; // 인코딩이 완료 후 Output 데이터를 저장 할 디렉토리를 지정 합니다.(로컬)
-    private static final String BASE_URI = "https://hsleesa.blob.core.windows.net/media/"; // 인코딩할 미디어가 있는 URL을 지정 합니다.
-    private static final String MP4_FILE_NAME = "ff7_re.mkv"; // 미디어 파일 이름을 지정 합니다.
-    private static final String INPUT_LABEL = "input1"; // 인코딩할 미디어의 라벨을 지정 합니다.
+    private static final String TRANSFORM_NAME = "AdaptiveBitrate";
+    private static final String OUTPUT_FOLDER = "Output";
+    private static final String BASE_URI = "https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/";
+    private static final String MP4_FILE_NAME = "Ignite-short.mp4";
+    private static final String INPUT_LABEL = "input1";
 
     // Please change this to your endpoint name
-    private static final String STREAMING_ENDPOINT_NAME = "default"; // 인코딩 완료 후 동영상을 서비스 할 Streaming Endpoint를 지정 합니다.
+    private static final String STREAMING_ENDPOINT_NAME = "default";
 
     public static void main(String[] args) {
         // Please make sure you have set configuration in resources/conf/appsettings.json. For more information, see
@@ -83,7 +82,7 @@ public class EncodingWithMESPredefinedPreset {
         try {
             List<TransformOutput> outputs = new ArrayList<>();
             outputs.add(new TransformOutput().withPreset(
-                    new BuiltInStandardEncoderPreset().withPresetName(EncoderNamedPreset.H265ADAPTIVE_STREAMING)));
+                    new BuiltInStandardEncoderPreset().withPresetName(EncoderNamedPreset.CONTENT_AWARE_ENCODING)));
 
             // Create the transform.
             System.out.println("Creating a transform...");
@@ -129,7 +128,7 @@ public class EncodingWithMESPredefinedPreset {
                 System.out.println();
 
                 // Now that the content has been encoded, publish it for Streaming by creating
-                // a StreamingLocator. 
+                // a StreamingLocator.
                 StreamingLocator locator = getStreamingLocator(manager, config.getResourceGroup(), config.getAccountName(),
                         outputAsset.name(), locatorName);
 
@@ -416,4 +415,3 @@ public class EncodingWithMESPredefinedPreset {
         }
     }
 }
-
