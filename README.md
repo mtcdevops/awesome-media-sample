@@ -22,10 +22,10 @@ products:
 *  `src/main/resources/conf/appsettings.json` 설정 파일을 열고 파일에 값을 붙여넣습니다.
 * 프로젝트 Clean 후 Build 합니다.
 
-  터미널 창을 열고 이 프로젝트의 루트 폴더로 이동하여 `gradle clean build`을 실행합니다.
+  터미널 창을 열고 이 프로젝트의 루트 폴더로 이동하여 `mvn clean compile`을 실행합니다.
 * 프로젝트를 실행 합니다.
 
-  `gradle run`을 실행한 다음 출력 콘솔의 지침을 따릅니다.
+  `mvn exec:java`을 실행한 다음 출력 콘솔의 지침을 따릅니다.
 
 ## Key concepts
 
