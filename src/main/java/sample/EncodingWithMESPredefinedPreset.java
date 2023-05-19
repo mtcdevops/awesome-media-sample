@@ -33,7 +33,7 @@ public class EncodingWithMESPredefinedPreset {
     private static final String TRANSFORM_NAME = "AdaptiveBitrate"; // 인코딩 프로파일을 입력 합니다.
     private static final String OUTPUT_FOLDER = "Output"; // 인코딩이 완료 후 Output 데이터를 저장 할 디렉토리를 지정 합니다.(로컬)
     private static final String BASE_URI = "https://hsleesa.blob.core.windows.net/media/"; // 인코딩할 미디어가 있는 URL을 지정 합니다.
-    private static final String MP4_FILE_NAME = "kirby.mp4"; // 미디어 파일 이름을 지정 합니다.
+    private static final String MP4_FILE_NAME = "ff7_re.mkv"; // 미디어 파일 이름을 지정 합니다.
     private static final String INPUT_LABEL = "input1"; // 인코딩할 미디어의 라벨을 지정 합니다.
 
     // Please change this to your endpoint name
@@ -83,7 +83,7 @@ public class EncodingWithMESPredefinedPreset {
         try {
             List<TransformOutput> outputs = new ArrayList<>();
             outputs.add(new TransformOutput().withPreset(
-                    new BuiltInStandardEncoderPreset().withPresetName(EncoderNamedPreset.CONTENT_AWARE_ENCODING)));
+                    new BuiltInStandardEncoderPreset().withPresetName(EncoderNamedPreset.H265ADAPTIVE_STREAMING)));
 
             // Create the transform.
             System.out.println("Creating a transform...");

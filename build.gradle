@@ -7,13 +7,24 @@
 plugins {
     id 'java-library'
     id 'maven-publish'
+    id 'application'
 }
+
+apply plugin : "java"
 
 repositories {
     mavenLocal()
     maven {
         url = uri('https://repo.maven.apache.org/maven2/')
     }
+}
+
+ext {
+    javaMainClass = "sample.EncodingWithMESPredefinedPreset"
+}
+
+application {
+    mainClassName = javaMainClass
 }
 
 dependencies {
