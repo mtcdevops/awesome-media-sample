@@ -1,0 +1,46 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.12'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+	
+}
+
+group = 'com.media'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+	maven {
+        url = uri('https://repo.maven.apache.org/maven2/')
+    }
+}
+
+dependencies {
+	// json-simple의 경우 MAVEN 환경이 아니라면 jar 파일 구해서 add.jar 필요
+	implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+	implementation 'com.azure.resourcemanager:azure-resourcemanager-mediaservices:2.2.0'
+	implementation 'commons-codec:commons-codec:1.15'
+	implementation 'com.azure:azure-messaging-eventhubs:5.10.3'
+	implementation 'com.azure:azure-messaging-eventhubs-checkpointstore-blob:1.10.2'
+	implementation 'com.azure:azure-core:1.32.0'
+	implementation 'com.azure:azure-identity:1.5.5'
+	implementation 'com.azure:azure-sdk-bom:1.0.3'
+	implementation 'com.azure:azure-storage-blob:12.14.1'
+	implementation 'io.jsonwebtoken:jjwt-api:0.10.5'
+	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.10.5'
+	implementation 'org.slf4j:slf4j-api:1.7.5'
+	testImplementation 'org.slf4j:slf4j-log4j12:1.7.5'
+
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+jar {
+    enabled = false
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
